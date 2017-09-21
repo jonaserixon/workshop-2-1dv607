@@ -12,7 +12,7 @@ namespace _1dv607
         {
             _name = name;
             _personalNumber = personalNumber;
-            _member_id =  new Random().Next(1, 25 + 1);
+            _member_id =  new Random().Next(1, 250000000 + 1);
         }
 
         public string getName() 

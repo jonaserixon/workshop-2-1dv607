@@ -15,17 +15,14 @@ namespace _1dv607
 
         
 
-        public void addMember(Member member) 
+        public void addMember(Member member)
         {
-            // string[] memberInfo = {member.getName(), "" + member.getPersonalNumber(), "" + member.getMemberId()};
-            // File.WriteAllLines(@"C:\Users\Jonne\Documents\workshop-2-1dv607\1dv607\Members.txt", memberInfo);
-
             string path = "C:\\Users\\Jonne\\Documents\\workshop-2-1dv607\\1dv607\\Members.txt";
             using (StreamWriter sw = File.AppendText(path))
             {
-                sw.WriteLine(member.getName());
-                sw.WriteLine(member.getPersonalNumber());
-                sw.WriteLine(member.getMemberId());
+                sw.WriteLine("Name: " + member.getName());
+                sw.WriteLine("PersonalNumber: " + member.getPersonalNumber());
+                sw.WriteLine("Member_id: " + member.getMemberId());
             }	
         }
 
@@ -36,6 +33,13 @@ namespace _1dv607
 
         public List<Member> getMembers()
         {
+            string path = "C:\\Users\\Jonne\\Documents\\workshop-2-1dv607\\1dv607\\Members.txt";
+
+            string[] readText = File.ReadAllLines(path);
+            foreach (string s in readText)
+            {
+                Console.WriteLine(s);
+            }
             return _members;
         }
     }

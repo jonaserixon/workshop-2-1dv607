@@ -19,5 +19,15 @@ namespace _1dv607
             _boatType = boatType;
             _length = length;
         }
+
+        public BoatType getType() 
+        {
+            return _boatType;
+        }
+
+        public int getLength() 
+        {
+            return _length;
+        }
     }
 }

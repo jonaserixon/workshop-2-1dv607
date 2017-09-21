@@ -10,17 +10,23 @@ namespace _1dv607
 
     class Boat
     {
-        private BoatType _boatType;
+        private int _memberId;
+        private string _boatType;
         private int _length;
-        
 
-        public Boat(BoatType boatType, int length) 
+        public Boat(int memberId, string boatType, int length) 
         {
+            _memberId = memberId;
             _boatType = boatType;
             _length = length;
         }
 
-        public BoatType getType() 
+        public int getMemberId()
+        {
+            return _memberId;
+        }
+
+        public string getType() 
         {
             return _boatType;
         }

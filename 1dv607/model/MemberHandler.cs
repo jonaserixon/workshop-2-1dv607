@@ -25,9 +25,19 @@ namespace _1dv607
             }	
         }
 
-        public void getMember() 
+        public Member getMember(string memberName) 
         {
-            //läsfrån txt fil
+            List<Member> members = getMembers();
+
+            for (int i = 0; i < members.Count; i++)
+            {
+                if (members[i].getName() == memberName)
+                {
+                    return members[i];
+                }
+            }
+
+            return null;
         }
 
         public List<Member> getMembers()

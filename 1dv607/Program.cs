@@ -20,6 +20,7 @@ namespace _1dv607
 
                 MemberHandler memberHandler = new MemberHandler();
                 BoatHandler boatHandler = new BoatHandler();
+                List<Member> members;
 
                 switch (choice)
                 {
@@ -40,19 +41,39 @@ namespace _1dv607
                         Console.WriteLine("Compact list of members");
                         Console.WriteLine("-----------------------");
 
-                        List<Member> members = memberHandler.getMembers();
+                        members = memberHandler.getMembers();
 
                         foreach(Member profile in members)
                         {
                             Console.WriteLine("Name: " + profile.getName());
-                            Console.WriteLine("Personal number: " + profile.getPersonalNumber());
                             Console.WriteLine("Member id: " + profile.getMemberId());
+                            Console.WriteLine("Number of boats: " + boatHandler.getBoats(profile.getMemberId()).Count);
+                            Console.WriteLine();
                         }
-                        
+                        Console.WriteLine("-----------------------");
+
                         break;
                     case "3":
                         Console.WriteLine("Verbose list of members");
+                        Console.WriteLine("-----------------------");
 
+                        members = memberHandler.getMembers();
+
+                        foreach(Member profile in members)
+                        {
+                            Console.WriteLine("Name: " + profile.getName());
+                            Console.WriteLine("Member id: " + profile.getMemberId());
+                            Console.WriteLine("Personal number: " + profile.getPersonalNumber());
+
+                            List<Boat> boats = boatHandler.getBoats(profile.getMemberId());
+                            foreach(Boat profileBoat in boats)
+                            {
+                                Console.WriteLine("Boat type: " + profileBoat.getType());
+                                Console.WriteLine("Boat length: " + profileBoat.getLength());
+                            }
+                            Console.WriteLine();
+                        }
+                        Console.WriteLine("-----------------------");
                         
                         break;
                     case "4":
@@ -71,11 +92,10 @@ namespace _1dv607
                         Console.WriteLine("Enter boat length: ");
                         int boatLength = Convert.ToInt32(Console.ReadLine());
 
-                        // leta upp member med memberName
-                        // få fram memberId
-                        // skapa båt
-                        // Boat boat = new Boat(memberId, boatType, boatLength);
-                        // BoatRegister.addBoat(boat);
+                        member = memberHandler.getMember(memberName);
+
+                        Boat boat = new Boat(member.getMemberId(), boatType, boatLength);
+                        boatHandler.addBoat(boat);
 
                         break;
                     case "7":

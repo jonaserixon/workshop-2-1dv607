@@ -6,11 +6,10 @@ namespace _1dv607
 {
     class MemberHandler
     {
-        private List<Member> _members;
 
         public MemberHandler() 
         {
-           _members = new List<Member>();
+           // _members = new List<Member>();
         }
 
         
@@ -20,9 +19,9 @@ namespace _1dv607
             string path = "C:\\Users\\Jonne\\Documents\\workshop-2-1dv607\\1dv607\\Members.txt";
             using (StreamWriter sw = File.AppendText(path))
             {
-                sw.WriteLine("Name: " + member.getName());
-                sw.WriteLine("PersonalNumber: " + member.getPersonalNumber());
-                sw.WriteLine("Member_id: " + member.getMemberId());
+                sw.WriteLine(member.getName());
+                sw.WriteLine(member.getPersonalNumber());
+                sw.WriteLine(member.getMemberId());
             }	
         }
 
@@ -33,14 +32,23 @@ namespace _1dv607
 
         public List<Member> getMembers()
         {
+            List<Member> members = new List<Member>();
+
             string path = "C:\\Users\\Jonne\\Documents\\workshop-2-1dv607\\1dv607\\Members.txt";
 
             string[] readText = File.ReadAllLines(path);
-            foreach (string s in readText)
+            for (int i = 0; i < readText.Length; i += 3)
             {
-                Console.WriteLine(s);
+                string memberName = readText[i];
+                int personalNumber = Convert.ToInt32(readText[i+1]);
+                int memberId = Convert.ToInt32(readText[i+2]);
+
+                Member member = new Member(memberName, personalNumber, memberId);
+
+                members.Add(member);
             }
-            return _members;
+
+            return members;
         }
     }
 }

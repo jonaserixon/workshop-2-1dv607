@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace _1dv607
 {
@@ -38,7 +40,14 @@ namespace _1dv607
                         Console.WriteLine("Compact list of members");
                         Console.WriteLine("-----------------------");
 
-                        memberHandler.getMembers();
+                        List<Member> members = memberHandler.getMembers();
+
+                        foreach(Member profile in members)
+                        {
+                            Console.WriteLine("Name: " + profile.getName());
+                            Console.WriteLine("Personal number: " + profile.getPersonalNumber());
+                            Console.WriteLine("Member id: " + profile.getMemberId());
+                        }
                         
                         break;
                     case "3":
@@ -65,8 +74,8 @@ namespace _1dv607
                         // leta upp member med memberName
                         // få fram memberId
                         // skapa båt
-                        Boat boat = new Boat(memberId, boatType, boatLength);
-                        BoatRegister.addBoat(boat);
+                        // Boat boat = new Boat(memberId, boatType, boatLength);
+                        // BoatRegister.addBoat(boat);
 
                         break;
                     case "7":

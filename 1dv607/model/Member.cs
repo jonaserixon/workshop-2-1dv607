@@ -8,11 +8,18 @@ namespace _1dv607
         private int _personalNumber;
         private int _member_id;
 
-        public Member(string name, int personalNumber) 
+        public Member(string name, int personalNumber)
         {
             _name = name;
             _personalNumber = personalNumber;
             _member_id =  new Random().Next(1, 250000000 + 1);
+        }
+
+        public Member(string name, int personalNumber, int member_id)
+        {
+            _name = name;
+            _personalNumber = personalNumber;
+            _member_id = member_id;
         }
 
         public string getName() 

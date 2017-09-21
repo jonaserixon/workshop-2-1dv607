@@ -8,11 +8,26 @@ namespace _1dv607
         private int _personalNumber;
         private int _member_id;
 
-        public Member(string name, int personalNumber, int member_id) 
+        public Member(string name, int personalNumber) 
         {
             _name = name;
             _personalNumber = personalNumber;
-            _member_id = member_id;
+            _member_id =  new Random().Next(1, 25 + 1);
+        }
+
+        public string getName() 
+        {
+            return _name;
+        }
+
+        public int getPersonalNumber() 
+        {
+            return _personalNumber;
+        }
+
+        public int getMemberId() 
+        {
+            return _member_id;
         }
     }
 }

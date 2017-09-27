@@ -77,12 +77,26 @@ namespace _1dv607
                         
                         break;
                     case "4":
-                        Console.WriteLine("4");
+                        // DELETE MEMBER
+                        Console.WriteLine("Enter name of member: ");
+                        string memberNameDelete = Console.ReadLine();
+
+                        // Remove boats for the removed member
+                        Member memberDelete = memberHandler.getMember(memberNameDelete);
+                        boatHandler.deleteBoats(memberDelete.getMemberId());
+
+                        // Remove member
+                        memberHandler.deleteMember(memberNameDelete);
                         break;
                     case "5":
+                        // EDIT MEMBER
                         Console.WriteLine("5");
                         break;
                     case "6":
+                        // VIEW MEMBER
+                        Console.WriteLine("7");
+                        break;
+                    case "7":
                         Console.WriteLine("Enter member name: ");
                         string memberName = Console.ReadLine();
 
@@ -98,13 +112,12 @@ namespace _1dv607
                         boatHandler.addBoat(boat);
 
                         break;
-                    case "7":
-                        Console.WriteLine("7");
-                        break;
                     case "8":
+                        // DELETE BOAT
                         Console.WriteLine("8");
                         break;
                     case "9":
+                        // EDIT BOAT
                         Console.WriteLine("9");
                         break;
                     case "0":

@@ -1,8 +1,0 @@
-C:\Users\Jonne\Documents\workshop-2-1dv607\1dv607\bin\Debug\netcoreapp1.1\1dv607.deps.json
-C:\Users\Jonne\Documents\workshop-2-1dv607\1dv607\bin\Debug\netcoreapp1.1\1dv607.runtimeconfig.json
-C:\Users\Jonne\Documents\workshop-2-1dv607\1dv607\bin\Debug\netcoreapp1.1\1dv607.runtimeconfig.dev.json
-C:\Users\Jonne\Documents\workshop-2-1dv607\1dv607\bin\Debug\netcoreapp1.1\1dv607.dll
-C:\Users\Jonne\Documents\workshop-2-1dv607\1dv607\bin\Debug\netcoreapp1.1\1dv607.pdb
-C:\Users\Jonne\Documents\workshop-2-1dv607\1dv607\obj\Debug\netcoreapp1.1\1dv607.AssemblyInfo.cs
-C:\Users\Jonne\Documents\workshop-2-1dv607\1dv607\obj\Debug\netcoreapp1.1\1dv607.dll
-C:\Users\Jonne\Documents\workshop-2-1dv607\1dv607\obj\Debug\netcoreapp1.1\1dv607.pdb

@@ -12,7 +12,33 @@ namespace _1dv607
            // _members = new List<Member>();
         }
 
-        
+        public void deleteMember(string memberName)
+        {
+            List<Member> members = getMembers();
+            Member removeMember = getMember(memberName);
+
+            // hitta index på remove member i members
+            int index = -1;
+            for (int i = 0; i < members.Count; i++)
+            {
+                if (members[i].getName() == memberName)
+                {
+                    index = i;
+                }
+            }
+
+            members.RemoveAt(index);
+
+            File.Delete("C:\\Users\\Jonne\\Documents\\workshop-2-1dv607\\1dv607\\Members.txt");
+
+            for (int i = 0; i < members.Count; i++)
+            {
+                addMember(members[i]);
+            }
+            // ta bort den member vi vill ta bort
+            // delete members.txt
+            // iterera addMember för alla members
+        }
 
         public void addMember(Member member)
         {

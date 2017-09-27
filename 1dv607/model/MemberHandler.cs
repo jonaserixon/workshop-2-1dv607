@@ -35,9 +35,6 @@ namespace _1dv607
             {
                 addMember(members[i]);
             }
-            // ta bort den member vi vill ta bort
-            // delete members.txt
-            // iterera addMember för alla members
         }
 
         public void addMember(Member member)

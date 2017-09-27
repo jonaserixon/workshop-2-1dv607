@@ -27,9 +27,19 @@ namespace _1dv607
             return _name;
         }
 
+        public void setName(string name)
+        {
+            _name = name;
+        }
+
         public int getPersonalNumber() 
         {
             return _personalNumber;
+        }
+
+        public void setPersonalNumber(int personalNumber)
+        {
+            _personalNumber = personalNumber;
         }
 
         public int getMemberId() 

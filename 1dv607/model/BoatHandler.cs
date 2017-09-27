@@ -11,6 +11,29 @@ namespace _1dv607
         {
         }
 
+        public void deleteBoat(Boat boat)
+        {
+            List<Boat> boats = getBoats(boat.getMemberId());
+
+            int index = -1;
+            for (int i = 0; i < boats.Count; i++)
+            {
+                if (boats[i].getType() == boat.getType() && boats[i].getLength() == boat.getLength())
+                {
+                    index = i;
+                }
+            }
+
+            boats.RemoveAt(index);
+
+            File.Delete("C:\\Users\\Jonne\\Documents\\workshop-2-1dv607\\1dv607\\Boats.txt");
+
+            for (int i = 0; i < boats.Count; i++)
+            {
+                addBoat(boats[i]);
+            }
+        }
+
         public void deleteBoats(int memberId)
         {
             // List<Boat> boats = getBoats().Except(getBoats(memberId)).ToList();

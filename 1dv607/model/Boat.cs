@@ -19,6 +19,11 @@ namespace _1dv607
             _memberId = memberId;
             _boatType = boatType;
             _length = length;
+
+            if (_boatType != "Sailboat" || _boatType != "Motorsailer" || _boatType != "Kayak" || _boatType != "Canoe")
+            {
+                _boatType = "Other";
+            }
         }
 
         public int getMemberId()
@@ -31,9 +36,24 @@ namespace _1dv607
             return _boatType;
         }
 
+        public void setType(string type)
+        {
+            _boatType = type;
+
+            if (_boatType != "Sailboat" || _boatType != "Motorsailer" || _boatType != "Kayak" || _boatType != "Canoe")
+            {
+                _boatType = "Other";
+            }
+        }
+
         public int getLength() 
         {
             return _length;
+        }
+
+        public void setLength(int length)
+        {
+            _length = length;
         }
     }
 }

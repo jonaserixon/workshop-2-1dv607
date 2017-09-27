@@ -164,7 +164,34 @@ namespace _1dv607
                         break;
                     case "9":
                         // EDIT BOAT
-                        
+                        Console.WriteLine("Enter name of boat owner: ");
+                        string boatOwner = Console.ReadLine();
+
+                        // visa lista av båtar tillhörande båtägaren :D
+                        Member boatOwner123 = memberHandler.getMember(boatOwner);
+                        List<Boat> boats123 = boatHandler.getBoats(boatOwner123.getMemberId());
+                        Console.WriteLine("Boats belonging to " + boatOwner + ":");
+                        for (int i = 0; i < boats123.Count; i++)
+                        {
+                            Console.WriteLine((i+1) + " Type: " + boats123[i].getType() + ", Length: " + boats123[i].getLength());
+                        }
+
+                        // välj vilken av båtarna som ska editeras :D
+                        Console.WriteLine("Which boat do you want to edit?");
+                        int boatNumber123 = Convert.ToInt32(Console.ReadLine());
+                        Boat boat123 = boats123[boatNumber123-1];
+
+                        // likadant som där uppe (:D)
+                        Console.WriteLine("Enter new boat type (" + boat123.getType() + "): ");
+                        string newType = Console.ReadLine();
+                        Console.WriteLine("Enter new boat length (" + boat123.getLength() + "): ");
+                        int newLength = Convert.ToInt32(Console.ReadLine());
+
+                        boatHandler.deleteBoat(boat123);
+
+                        boat123.setType(newType);
+                        boat123.setLength(newLength);
+                        boatHandler.addBoat(boat123);
                         break;
                     case "0":
                         programIsRunning = false;

@@ -3,11 +3,6 @@ using System;
 namespace _1dv607
 {
 
-    public enum BoatType 
-    {
-        Sailboat, Motorsailer, Kayak, Other
-    }
-
     class Boat
     {
         private int _memberId;
@@ -20,10 +15,25 @@ namespace _1dv607
             _boatType = boatType;
             _length = length;
 
-            if (_boatType != "Sailboat" || _boatType != "Motorsailer" || _boatType != "Kayak" || _boatType != "Canoe")
+            switch (_boatType)
             {
-                _boatType = "Other";
+                case "Sailboat":
+                    break;
+                case "Motorsailer":
+                    break;
+                case "Kayak":
+                    break;
+                case "Canoe":
+                    break;
+                default:
+                    _boatType = "Other";
+                    break;
             }
+
+            // if (_boatType != "Sailboat" || _boatType != "Motorsailer" || _boatType != "Kayak" || _boatType != "Canoe")
+            // {
+            //     _boatType = "Other";
+            // }
         }
 
         public int getMemberId()

@@ -25,7 +25,14 @@ namespace _1dv607
 
             boats.RemoveAt(index);
 
-            File.Delete("C:\\Users\\Jonne\\Documents\\workshop-2-1dv607\\1dv607\\Boats.txt");
+            if (File.Exists("C:\\Users\\Jonne\\Documents\\workshop-2-1dv607\\1dv607\\Boats.txt"))
+            {
+                File.Delete("C:\\Users\\Jonne\\Documents\\workshop-2-1dv607\\1dv607\\Boats.txt");
+            }
+            else
+            {
+                throw new Exception("Could not read the Boats file.");
+            }
 
             for (int i = 0; i < boats.Count; i++)
             {
@@ -52,25 +59,29 @@ namespace _1dv607
                 }
             }
 
-            // Console.WriteLine(boats.Count);
-
-            File.Delete("C:\\Users\\Jonne\\Documents\\workshop-2-1dv607\\1dv607\\Boats.txt");
+            if (File.Exists("C:\\Users\\Jonne\\Documents\\workshop-2-1dv607\\1dv607\\Boats.txt"))
+            {
+                File.Delete("C:\\Users\\Jonne\\Documents\\workshop-2-1dv607\\1dv607\\Boats.txt");
+            }
+            else
+            {
+                throw new Exception("Could not read the Boats file.");
+            }
 
             for (int i = 0; i < boats.Count; i++)
             {
                 addBoat(boats[i]);
             }
-            // List<Boat> removeBoats = getBoats(memberId);
-
-            // ta bort alla removeBoats i boats
-
-            // delete boats.txt
-            // skriv boats till boats.txt
         }
 
         public List<Boat> getBoats()
         {
             List<Boat> boats = new List<Boat>();
+            
+            if (File.Exists("C:\\Users\\Jonne\\Documents\\workshop-2-1dv607\\1dv607\\Boats.txt") == false)
+            {
+                throw new Exception("Could not read the Boats file.");
+            }
 
             string path = "C:\\Users\\Jonne\\Documents\\workshop-2-1dv607\\1dv607\\Boats.txt";
 

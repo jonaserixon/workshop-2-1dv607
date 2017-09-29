@@ -36,5 +36,13 @@ namespace _1dv607
         {
             Console.Clear();
         }
+
+        public void Error(string message)
+        {
+            Output(message);
+            Output("Press any key to continue.");
+            Input();
+            Clear();
+        }
     }
 }

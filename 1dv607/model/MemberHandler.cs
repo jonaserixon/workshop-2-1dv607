@@ -9,11 +9,15 @@ namespace _1dv607
 
         public MemberHandler() 
         {
-           // _members = new List<Member>();
         }
 
         public void deleteMember(string memberName)
         {
+            if (File.Exists("C:\\Users\\Jonne\\Documents\\workshop-2-1dv607\\1dv607\\Members.txt") == false)
+            {
+                throw new Exception("Could not read the Boats file.");
+            }
+
             List<Member> members = getMembers();
             Member removeMember = getMember(memberName);
 
@@ -39,6 +43,11 @@ namespace _1dv607
 
         public void addMember(Member member)
         {
+            if (File.Exists("C:\\Users\\Jonne\\Documents\\workshop-2-1dv607\\1dv607\\Members.txt") == false)
+            {
+                throw new Exception("Could not read the Boats file.");
+            }
+
             string path = "C:\\Users\\Jonne\\Documents\\workshop-2-1dv607\\1dv607\\Members.txt";
             using (StreamWriter sw = File.AppendText(path))
             {
@@ -68,6 +77,11 @@ namespace _1dv607
             List<Member> members = new List<Member>();
 
             string path = "C:\\Users\\Jonne\\Documents\\workshop-2-1dv607\\1dv607\\Members.txt";
+            
+            if (File.Exists("C:\\Users\\Jonne\\Documents\\workshop-2-1dv607\\1dv607\\Members.txt") == false)
+            {
+                throw new Exception("Could not read the Boats file.");
+            }
 
             string[] readText = File.ReadAllLines(path);
             for (int i = 0; i < readText.Length; i += 3)

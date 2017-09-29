@@ -49,6 +49,8 @@ namespace _1dv607
 
             // Remove member
             _memberHandler.deleteMember(memberName);
+
+            _view.Output("Member deleted.");
         }
 
         public void EditMember()
@@ -62,6 +64,12 @@ namespace _1dv607
 
             // show member information
             Member member = _memberHandler.getMember(memberName);
+            if (member == null)
+            {
+                _view.Error("No member with that name found.");
+                EditMember();
+            }
+
             _view.Output("Name: " + member.getName() + ", personal number: " + member.getPersonalNumber());
 
             // enter new member name
@@ -77,6 +85,8 @@ namespace _1dv607
             member.setName(newName);
             member.setPersonalNumber(newPersonalNumber);
             _memberHandler.addMember(member);
+
+            _view.Output("Member edited!");
         }
 
         public void ViewMember()
@@ -87,10 +97,16 @@ namespace _1dv607
             _view.Output("Enter member name: ");
             string memberName = _view.Input();
 
-            Member memberView = _memberHandler.getMember(memberName);
-            _view.Output("Name: " + memberView.getName());
-            _view.Output("Personal number: " + memberView.getPersonalNumber());
-            _view.Output("Member id: " + memberView.getMemberId());
+            Member member = _memberHandler.getMember(memberName);
+            if (member == null)
+            {
+                _view.Error("No member with that name found.");
+                ViewMember();
+            }
+
+            _view.Output("Name: " + member.getName());
+            _view.Output("Personal number: " + member.getPersonalNumber());
+            _view.Output("Member id: " + member.getMemberId());
             _view.Output("");
         }
     }

@@ -25,9 +25,9 @@ namespace _1dv607
 
             boats.RemoveAt(index);
 
-            if (File.Exists("C:\\Users\\Jonne\\Documents\\workshop-2-1dv607\\1dv607\\Boats.txt"))
+            if (File.Exists("./Boats.txt"))
             {
-                File.Delete("C:\\Users\\Jonne\\Documents\\workshop-2-1dv607\\1dv607\\Boats.txt");
+                File.Delete("./Boats.txt");
             }
             else
             {
@@ -59,9 +59,9 @@ namespace _1dv607
                 }
             }
 
-            if (File.Exists("C:\\Users\\Jonne\\Documents\\workshop-2-1dv607\\1dv607\\Boats.txt"))
+            if (File.Exists("./Boats.txt"))
             {
-                File.Delete("C:\\Users\\Jonne\\Documents\\workshop-2-1dv607\\1dv607\\Boats.txt");
+                File.Delete("./Boats.txt");
             }
             else
             {
@@ -78,12 +78,12 @@ namespace _1dv607
         {
             List<Boat> boats = new List<Boat>();
             
-            if (File.Exists("C:\\Users\\Jonne\\Documents\\workshop-2-1dv607\\1dv607\\Boats.txt") == false)
+            if (File.Exists("./Boats.txt") == false)
             {
                 throw new Exception("Could not read the Boats file.");
             }
 
-            string path = "C:\\Users\\Jonne\\Documents\\workshop-2-1dv607\\1dv607\\Boats.txt";
+            string path = "./Boats.txt";
 
             string[] readText = File.ReadAllLines(path);
             for (int i = 0; i < readText.Length; i += 3)
@@ -119,7 +119,7 @@ namespace _1dv607
 
         public void addBoat(Boat boat)
         {
-            string path = "C:\\Users\\Jonne\\Documents\\workshop-2-1dv607\\1dv607\\Boats.txt";
+            string path = "./Boats.txt";
             using (StreamWriter sw = File.AppendText(path))
             {
                 sw.WriteLine(boat.getMemberId());

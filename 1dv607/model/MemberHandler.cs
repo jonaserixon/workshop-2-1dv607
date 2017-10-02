@@ -13,7 +13,7 @@ namespace _1dv607
 
         public void deleteMember(string memberName)
         {
-            if (File.Exists("C:\\Users\\Jonne\\Documents\\workshop-2-1dv607\\1dv607\\Members.txt") == false)
+            if (File.Exists("./Members.txt") == false)
             {
                 throw new Exception("Could not read the Boats file.");
             }
@@ -33,7 +33,7 @@ namespace _1dv607
 
             members.RemoveAt(index);
 
-            File.Delete("C:\\Users\\Jonne\\Documents\\workshop-2-1dv607\\1dv607\\Members.txt");
+            File.Delete("./Members.txt");
 
             for (int i = 0; i < members.Count; i++)
             {
@@ -43,12 +43,12 @@ namespace _1dv607
 
         public void addMember(Member member)
         {
-            if (File.Exists("C:\\Users\\Jonne\\Documents\\workshop-2-1dv607\\1dv607\\Members.txt") == false)
+            if (File.Exists("./Members.txt") == false)
             {
                 throw new Exception("Could not read the Boats file.");
             }
 
-            string path = "C:\\Users\\Jonne\\Documents\\workshop-2-1dv607\\1dv607\\Members.txt";
+            string path = "./Members.txt";
             using (StreamWriter sw = File.AppendText(path))
             {
                 sw.WriteLine(member.getName());
@@ -76,9 +76,9 @@ namespace _1dv607
         {
             List<Member> members = new List<Member>();
 
-            string path = "C:\\Users\\Jonne\\Documents\\workshop-2-1dv607\\1dv607\\Members.txt";
+            string path = "./Members.txt";
             
-            if (File.Exists("C:\\Users\\Jonne\\Documents\\workshop-2-1dv607\\1dv607\\Members.txt") == false)
+            if (File.Exists("./Members.txt") == false)
             {
                 throw new Exception("Could not read the Boats file.");
             }

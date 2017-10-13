@@ -43,9 +43,9 @@ namespace _1dv607
             _view.Output("Enter name of member: ");
             string memberName = _view.Input();
 
-            // Remove boats for the removed member
+            // Remove boats along the removed member
             Member member = _memberHandler.getMember(memberName);
-            _boatHandler.deleteBoats(member.getMemberId());
+            _boatHandler.deleteBoats(member.MemberId);
 
             // Remove member
             _memberHandler.deleteMember(memberName);
@@ -58,11 +58,10 @@ namespace _1dv607
             _view.Output("Edit member");
             _view.Output("-----------------------");
 
-            // enter member name
             _view.Output("Enter member name: ");
             string memberName = _view.Input();
 
-            // show member information
+            //COntains member information
             Member member = _memberHandler.getMember(memberName);
             if (member == null)
             {
@@ -70,20 +69,19 @@ namespace _1dv607
                 EditMember();
             }
 
-            _view.Output("Name: " + member.getName() + ", personal number: " + member.getPersonalNumber());
+            _view.Output("Name: " + member.Name + ", personal number: " + member.PersonalNumber);
 
-            // enter new member name
-            _view.Output("Enter new name (" + member.getName() + "): ");
+            _view.Output("Enter new name (" + member.Name + "): ");
             string newName = _view.Input();
 
-            // Enter new personal number
-            _view.Output("Enter new personal number (" + member.getPersonalNumber() + "): ");
+            _view.Output("Enter new personal number (" + member.PersonalNumber + "): ");
             int newPersonalNumber = Convert.ToInt32(_view.Input());
 
-            _memberHandler.deleteMember(member.getName());
+            _memberHandler.deleteMember(member.Name);
 
-            member.setName(newName);
-            member.setPersonalNumber(newPersonalNumber);
+            member.Name = newName;
+            member.PersonalNumber = newPersonalNumber;
+
             _memberHandler.addMember(member);
 
             _view.Output("Member edited!");
@@ -104,9 +102,9 @@ namespace _1dv607
                 ViewMember();
             }
 
-            _view.Output("Name: " + member.getName());
-            _view.Output("Personal number: " + member.getPersonalNumber());
-            _view.Output("Member id: " + member.getMemberId());
+            _view.Output("Name: " + member.Name);
+            _view.Output("Personal number: " + member.PersonalNumber);
+            _view.Output("Member id: " + member.MemberId);
             _view.Output("");
         }
     }

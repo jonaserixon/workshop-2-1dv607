@@ -29,11 +29,6 @@ namespace _1dv607
                     _boatType = "Other";
                     break;
             }
-
-            // if (_boatType != "Sailboat" || _boatType != "Motorsailer" || _boatType != "Kayak" || _boatType != "Canoe")
-            // {
-            //     _boatType = "Other";
-            // }
         }
 
         public int getMemberId()

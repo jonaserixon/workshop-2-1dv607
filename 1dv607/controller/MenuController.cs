@@ -83,9 +83,9 @@ namespace _1dv607
 
             foreach(Member profile in members)
             {
-                _view.Output("Name: " + profile.getName());
-                _view.Output("Member id: " + profile.getMemberId());
-                _view.Output("Number of boats: " + _boatHandler.getBoats(profile.getMemberId()).Count);
+                _view.Output("Name: " + profile.Name);
+                _view.Output("Member id: " + profile.MemberId);
+                _view.Output("Number of boats: " + _boatHandler.getBoats(profile.MemberId).Count);
                 _view.Output("");
             }
         }
@@ -99,11 +99,11 @@ namespace _1dv607
 
             foreach(Member profile in members)
             {
-                _view.Output("Name: " + profile.getName());
-                _view.Output("Member id: " + profile.getMemberId());
-                _view.Output("Personal number: " + profile.getPersonalNumber());
+                _view.Output("Name: " + profile.Name);
+                _view.Output("Member id: " + profile.MemberId);
+                _view.Output("Personal number: " + profile.PersonalNumber);
 
-                List<Boat> boats = _boatHandler.getBoats(profile.getMemberId());
+                List<Boat> boats = _boatHandler.getBoats(profile.MemberId);
                 foreach(Boat profileBoat in boats)
                 {
                     _view.Output("Boat type: " + profileBoat.getType());

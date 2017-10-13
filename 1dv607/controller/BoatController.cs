@@ -38,7 +38,7 @@ namespace _1dv607
                 _view.Output("Enter boat length: ");
                 int boatLength = Convert.ToInt32(_view.Input());
 
-                Boat boat = new Boat(member.getMemberId(), boatType, boatLength);
+                Boat boat = new Boat(member.MemberId, boatType, boatLength);
                 _boatHandler.addBoat(boat);
 
                 _view.Output("Boat added!");
@@ -55,11 +55,10 @@ namespace _1dv607
             _view.Output("Delete boat");
             _view.Output("-----------------------");
 
-            // enter username
             _view.Output("Enter member name: ");
             string memberName = _view.Input();
 
-            // numbered list of boats belonging to that user
+            //Numbered list of boats belonging to that user
             Member member = _memberHandler.getMember(memberName);
             if (member == null)
             {
@@ -70,7 +69,7 @@ namespace _1dv607
             List<Boat> boatsDelete;
             try
             {
-                boatsDelete = _boatHandler.getBoats(member.getMemberId());
+                boatsDelete = _boatHandler.getBoats(member.MemberId);
 
                 if (boatsDelete.Count == 0)
                 {
@@ -84,7 +83,7 @@ namespace _1dv607
                     _view.Output((i+1) + " Type: " + boatsDelete[i].getType() + ", Length: " + boatsDelete[i].getLength());
                 }
 
-                // enter number of boat the should be deleted
+                //Enter number of boat the should be deleted
                 _view.Output("Which boat do you want to delete?");
                 int boatNumber = Convert.ToInt32(_view.Input());
                 if (boatNumber < 1 || boatNumber > boatsDelete.Count)
@@ -93,7 +92,6 @@ namespace _1dv607
                     DeleteBoat();
                 }
 
-                // delete boat
                 try
                 {
                     _boatHandler.deleteBoat(boatsDelete[boatNumber-1]);
@@ -121,21 +119,19 @@ namespace _1dv607
             _view.Output("Enter name of boat owner: ");
             string boatOwnerName = _view.Input();
 
-            // visa lista av båtar tillhörande båtägaren :D
+            //Show a list of boats belonging to the desired owner
             Member boatOwner = _memberHandler.getMember(boatOwnerName);
-            List<Boat> boats = _boatHandler.getBoats(boatOwner.getMemberId());
+            List<Boat> boats = _boatHandler.getBoats(boatOwner.MemberId);
             _view.Output("Boats belonging to " + boatOwner + ":");
             for (int i = 0; i < boats.Count; i++)
             {
                 _view.Output((i+1) + " Type: " + boats[i].getType() + ", Length: " + boats[i].getLength());
             }
 
-            // välj vilken av båtarna som ska editeras :D
             _view.Output("Which boat do you want to edit?");
             int boatNumber = Convert.ToInt32(_view.Input());
             Boat boat = boats[boatNumber-1];
 
-            // likadant som där uppe (:D)
             _view.Output("Enter new boat type (" + boat.getType() + "): ");
             string newType = _view.Input();
             _view.Output("Enter new boat length (" + boat.getLength() + "): ");

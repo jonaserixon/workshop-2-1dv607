@@ -12,14 +12,13 @@ namespace _1dv607
             MenuView view = new MenuView();
 
             // Create model
-            MemberHandler memberHandler = new MemberHandler();
-            BoatHandler boatHandler = new BoatHandler();
+            DatabaseModel databaseModel = new DatabaseModel();
+            MemberHandler memberHandler = new MemberHandler(databaseModel);
+            BoatHandler boatHandler = new BoatHandler(databaseModel);
 
             // Create controller
             MenuController menuController = new MenuController(view, memberHandler, boatHandler);
             menuController.run();
-
-            
         }
     }
 }

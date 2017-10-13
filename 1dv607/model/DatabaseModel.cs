@@ -9,7 +9,7 @@ namespace _1dv607
         private static string MEMBER_FILE_PATH = "./Members.txt";
         private static string BOAT_FILE_PATH = "./Boats.txt";
 
-        public void doesFileExist(string filepath)
+        private void doesFileExist(string filepath)
         {
             if (File.Exists(filepath) == false)
             {

@@ -8,3 +8,4 @@ https://coursepress.lnu.se/kurs/objektorienterad-analys-och-design-med-uml/works
 2. Open command line and navigate to project folder
 3. Type "dotnet restore" and press enter
 4. Start system with the "dotnet run" command
+- You might need to edit your csproj file to match your .NET Core version. Eg. "<TargetFramework>netcoreappX.X</TargetFramework>"

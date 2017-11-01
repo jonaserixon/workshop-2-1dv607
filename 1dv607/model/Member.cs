@@ -26,6 +26,21 @@ namespace _1dv607
             Boats.Add(boat);
         }
 
+        public void RemoveBoat(Boat boat)
+        {
+            List<Boat> boatsTemp = new List<Boat>();
+
+            for (int i = 0; i < Boats.Count; i++)
+            {
+                if (Boats[i].BoatId != boat.BoatId)
+                {
+                    boatsTemp.Add(boat);
+                }
+            }
+
+            Boats = boatsTemp;
+        }
+
         public string Name{get; set;}
         public int PersonalNumber{get; set;}
         public int MemberId {get; set;}

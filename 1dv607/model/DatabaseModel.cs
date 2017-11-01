@@ -24,6 +24,13 @@ namespace _1dv607
                 sw.WriteLine(member.Name);
                 sw.WriteLine(member.PersonalNumber);
                 sw.WriteLine(member.MemberId);
+
+                foreach(Boat boat in member.Boats)
+                {
+                    sw.WriteLine("-" + boat.getType());
+                    sw.WriteLine(boat.getLength());
+                    sw.WriteLine(boat.BoatId);                         
+                }
             }
         }
 
@@ -36,11 +43,30 @@ namespace _1dv607
             string[] readText = File.ReadAllLines(MEMBER_FILE_PATH);
             for (int i = 0; i < readText.Length; i += 3)
             {
+                if (readText[i][0] == '-')
+                {
+                    continue;
+                }
+
                 string memberName = readText[i];
                 int personalNumber = Convert.ToInt32(readText[i+1]);
                 int memberId = Convert.ToInt32(readText[i+2]);
 
                 Member member = new Member(memberName, personalNumber, memberId);
+
+                int counter = 3;
+
+                while (readText.Length >= i+counter+2 && readText[i+counter][0] == '-')
+                {
+                    string boatType = readText[i+counter].Substring(1);
+                    int boatLength = Convert.ToInt32(readText[i+counter+1]);
+                    int boatId = Convert.ToInt32(readText[i+counter+2]);
+
+                    Boat boat = new Boat(boatType, boatLength, boatId);
+                    member.AddBoat(boat);
+
+                    counter = counter + 3;
+                }
 
                 members.Add(member);
             }
@@ -107,81 +133,53 @@ namespace _1dv607
 
         public void deleteBoat(Member member, Boat boat)
         {
-            doesFileExist(BOAT_FILE_PATH);
-            
-            List<Boat> boats = findBoats(member.MemberId);
+            doesFileExist(MEMBER_FILE_PATH);
 
-            int index = -1;
-            for (int i = 0; i < boats.Count; i++)
+            List<Member> members = findMembers();
+
+            for (int i = 0; i < members.Count; i++)
             {
-                if (boats[i].getType() == boat.getType() && boats[i].getLength() == boat.getLength())
+                if (members[i].MemberId == member.MemberId)
                 {
-                    index = i;
+                    members[i].RemoveBoat(boat);
+                    break;
                 }
             }
 
-            boats.RemoveAt(index);
-
-            if (File.Exists(BOAT_FILE_PATH))
+            if (File.Exists(MEMBER_FILE_PATH))
             {
-                File.Delete(BOAT_FILE_PATH);
+                File.Delete(MEMBER_FILE_PATH);
             }
 
-            for (int i = 0; i < boats.Count; i++)
+            for (int i = 0; i < members.Count; i++)
             {
-                addBoat(boats[i]);
+                addMember(members[i]);
             }
         }
 
         public void deleteBoats(Member member)
         {
-            doesFileExist(BOAT_FILE_PATH);
+            doesFileExist(MEMBER_FILE_PATH);
 
-            List<Boat> boats = findBoats();
-            List<Boat> removeBoats = findBoats(member.MemberId);
+            List<Member> members = findMembers();
 
-            for (int i = 0; i < boats.Count; i++)
+            foreach(Member member2 in members)
             {
-                for (int j = 0; j < removeBoats.Count; j++)
+                if (member.MemberId == member2.MemberId)
                 {
-                    if (boats[i].BoatId == removeBoats[j].BoatId)
-                    {
-                        boats.RemoveAt(i);
-                        i--;
-                    }
+                    member2.Boats = new List<Boat>();
                 }
             }
 
-            if (File.Exists(BOAT_FILE_PATH))
+            if (File.Exists(MEMBER_FILE_PATH))
             {
-                File.Delete(BOAT_FILE_PATH);
+                File.Delete(MEMBER_FILE_PATH);
             }
 
-            for (int i = 0; i < boats.Count; i++)
+            for (int i = 0; i < members.Count; i++)
             {
-                addBoat(boats[i]);
+                addMember(members[i]);
             }
-        }
-
-        public List<Boat> findBoats() 
-        {
-            doesFileExist(BOAT_FILE_PATH);
-
-            List<Boat> boats = new List<Boat>();
-
-            string[] readText = File.ReadAllLines(BOAT_FILE_PATH);
-            for (int i = 0; i < readText.Length; i += 3)
-            {
-                int boatId = Convert.ToInt32(readText[i]);
-                string boatType = readText[i+1];
-                int boatLength = Convert.ToInt32(readText[i+2]);
-
-                Boat boat = new Boat(boatType, boatLength, boatId);
-
-                boats.Add(boat);
-            }
-
-            return boats;
         }
 
         public List<Boat> findBoats(int memberId)
@@ -191,15 +189,28 @@ namespace _1dv607
             return member.Boats;
         }
 
-        public void addBoat(Boat boat)
+        public void addBoat(Member member, Boat boat)
         {
-            Console.WriteLine("test");
-            using (StreamWriter sw = File.AppendText(BOAT_FILE_PATH))
+            // hämta en lista av members från Members.txt
+            List<Member> members = findMembers();
+            // lägg till boat till den member som matchar member i argumentet
+            foreach(Member member2 in members)
             {
-                sw.WriteLine(boat.BoatId);
-                sw.WriteLine(boat.getType());
-                sw.WriteLine(boat.getLength());
-            }	
+                if (member.MemberId == member2.MemberId)
+                {
+                    member2.AddBoat(boat);
+                }
+            }
+            // ta bort Members.txt
+            if (File.Exists(MEMBER_FILE_PATH))
+            {
+                File.Delete(MEMBER_FILE_PATH);
+            }
+            // skapa en ny Members.txt med den nya båten
+            for (int i = 0; i < members.Count; i++)
+            {
+                addMember(members[i]);
+            }
         }
     }
 }

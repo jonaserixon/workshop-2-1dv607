@@ -22,20 +22,14 @@ namespace _1dv607
             databaseModel.deleteBoats(member);
         }
 
-        public List<Boat> getBoats()
-        {
-            return databaseModel.findBoats();
-        }
-
         public List<Boat> getBoats(int memberId)
         {
             return databaseModel.findBoats(memberId);
         }
 
-        public void addBoat(Boat boat)
+        public void addBoat(Member member, Boat boat)
         {
-            Console.WriteLine("hej");
-            databaseModel.addBoat(boat);
+            databaseModel.addBoat(member, boat);
         }
     }
 }

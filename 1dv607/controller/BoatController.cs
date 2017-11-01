@@ -39,8 +39,7 @@ namespace _1dv607
                 int boatLength = Convert.ToInt32(_view.Input());
 
                 Boat boat = new Boat(boatType, boatLength);
-                _boatHandler.addBoat(boat);
-                member.AddBoat(boat);
+                _boatHandler.addBoat(member, boat);
 
                 _view.Output("Boat added!");
             }
@@ -142,7 +141,7 @@ namespace _1dv607
 
             boat.setType(newType);
             boat.setLength(newLength);
-            _boatHandler.addBoat(boat);
+            _boatHandler.addBoat(boatOwner, boat);
         }
     }
 }

@@ -45,7 +45,7 @@ namespace _1dv607
 
             // Remove boats along the removed member
             Member member = _memberHandler.getMember(memberName);
-            _boatHandler.deleteBoats(member.MemberId);
+            _boatHandler.deleteBoats(member);
 
             // Remove member
             _memberHandler.deleteMember(memberName);

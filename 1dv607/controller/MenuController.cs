@@ -85,7 +85,7 @@ namespace _1dv607
             {
                 _view.Output("Name: " + profile.Name);
                 _view.Output("Member id: " + profile.MemberId);
-                _view.Output("Number of boats: " + _boatHandler.getBoats(profile.MemberId).Count);
+                _view.Output("Number of boats: " + profile.Boats.Count);
                 _view.Output("");
             }
         }

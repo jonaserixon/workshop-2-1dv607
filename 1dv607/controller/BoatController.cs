@@ -38,8 +38,9 @@ namespace _1dv607
                 _view.Output("Enter boat length: ");
                 int boatLength = Convert.ToInt32(_view.Input());
 
-                Boat boat = new Boat(member.MemberId, boatType, boatLength);
+                Boat boat = new Boat(boatType, boatLength);
                 _boatHandler.addBoat(boat);
+                member.AddBoat(boat);
 
                 _view.Output("Boat added!");
             }
@@ -94,7 +95,7 @@ namespace _1dv607
 
                 try
                 {
-                    _boatHandler.deleteBoat(boatsDelete[boatNumber-1]);
+                    _boatHandler.deleteBoat(member, boatsDelete[boatNumber-1]);
                 }
                 catch (Exception e)
                 {
@@ -137,7 +138,7 @@ namespace _1dv607
             _view.Output("Enter new boat length (" + boat.getLength() + "): ");
             int newLength = Convert.ToInt32(_view.Input());
 
-            _boatHandler.deleteBoat(boat);
+            _boatHandler.deleteBoat(boatOwner, boat);
 
             boat.setType(newType);
             boat.setLength(newLength);

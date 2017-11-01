@@ -63,6 +63,21 @@ namespace _1dv607
             return null;
         }
 
+        public Member findMember(int memberId)
+        {
+            List<Member> members = findMembers();
+
+            for (int i = 0; i < members.Count; i++)
+            {
+                if (members[i].MemberId == memberId)
+                {
+                    return members[i];
+                }
+            }
+
+            return null;
+        }
+
         public void deleteMember(string memberName) 
         {
             doesFileExist(MEMBER_FILE_PATH);
@@ -90,11 +105,11 @@ namespace _1dv607
             }
         }
 
-        public void deleteBoat(Boat boat)
+        public void deleteBoat(Member member, Boat boat)
         {
             doesFileExist(BOAT_FILE_PATH);
             
-            List<Boat> boats = findBoats(boat.getMemberId());
+            List<Boat> boats = findBoats(member.MemberId);
 
             int index = -1;
             for (int i = 0; i < boats.Count; i++)
@@ -118,18 +133,18 @@ namespace _1dv607
             }
         }
 
-        public void deleteBoats(int memberId)
+        public void deleteBoats(Member member)
         {
             doesFileExist(BOAT_FILE_PATH);
 
             List<Boat> boats = findBoats();
-            List<Boat> removeBoats = findBoats(memberId);
+            List<Boat> removeBoats = findBoats(member.MemberId);
 
             for (int i = 0; i < boats.Count; i++)
             {
                 for (int j = 0; j < removeBoats.Count; j++)
                 {
-                    if (boats[i].getMemberId() == removeBoats[j].getMemberId())
+                    if (boats[i].BoatId == removeBoats[j].BoatId)
                     {
                         boats.RemoveAt(i);
                         i--;
@@ -157,11 +172,11 @@ namespace _1dv607
             string[] readText = File.ReadAllLines(BOAT_FILE_PATH);
             for (int i = 0; i < readText.Length; i += 3)
             {
-                int memberId = Convert.ToInt32(readText[i]);
+                int boatId = Convert.ToInt32(readText[i]);
                 string boatType = readText[i+1];
                 int boatLength = Convert.ToInt32(readText[i+2]);
 
-                Boat boat = new Boat(memberId, boatType, boatLength);
+                Boat boat = new Boat(boatType, boatLength, boatId);
 
                 boats.Add(boat);
             }
@@ -171,26 +186,17 @@ namespace _1dv607
 
         public List<Boat> findBoats(int memberId)
         {
-            List<Boat> boats = findBoats();
+            Member member = findMember(memberId);
 
-            List<Boat> memberBoats = new List<Boat>();
-
-            for (int i = 0; i < boats.Count; i++)
-            {
-                if (boats[i].getMemberId() == memberId)
-                {
-                    memberBoats.Add(boats[i]);
-                }
-            }
-
-            return memberBoats;
+            return member.Boats;
         }
 
         public void addBoat(Boat boat)
         {
+            Console.WriteLine("test");
             using (StreamWriter sw = File.AppendText(BOAT_FILE_PATH))
             {
-                sw.WriteLine(boat.getMemberId());
+                sw.WriteLine(boat.BoatId);
                 sw.WriteLine(boat.getType());
                 sw.WriteLine(boat.getLength());
             }	

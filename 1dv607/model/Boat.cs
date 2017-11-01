@@ -5,15 +5,14 @@ namespace _1dv607
 
     class Boat
     {
-        private int _memberId;
         private string _boatType;
         private int _length;
 
-        public Boat(int memberId, string boatType, int length) 
+        public Boat(string boatType, int length) 
         {
-            _memberId = memberId;
             _boatType = boatType;
             _length = length;
+            BoatId =  new Random().Next(1, 250000000 + 1);
 
             switch (_boatType)
             {
@@ -31,10 +30,29 @@ namespace _1dv607
             }
         }
 
-        public int getMemberId()
+        public Boat(string boatType, int length, int boatId)
         {
-            return _memberId;
+            _boatType = boatType;
+            _length = length;
+            BoatId =  boatId;
+
+            switch (_boatType)
+            {
+                case "Sailboat":
+                    break;
+                case "Motorsailer":
+                    break;
+                case "Kayak":
+                    break;
+                case "Canoe":
+                    break;
+                default:
+                    _boatType = "Other";
+                    break;
+            }
         }
+        
+        public int BoatId {get; set;}
 
         public string getType() 
         {

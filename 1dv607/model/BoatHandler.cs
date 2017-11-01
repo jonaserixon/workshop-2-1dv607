@@ -12,14 +12,14 @@ namespace _1dv607
             this.databaseModel = databaseModel;
         }
 
-        public void deleteBoat(Boat boat)
+        public void deleteBoat(Member member, Boat boat)
         {
-            databaseModel.deleteBoat(boat);
+            databaseModel.deleteBoat(member, boat);
         }
 
-        public void deleteBoats(int memberId)
+        public void deleteBoats(Member member)
         {
-            databaseModel.deleteBoats(memberId);
+            databaseModel.deleteBoats(member);
         }
 
         public List<Boat> getBoats()
@@ -34,6 +34,7 @@ namespace _1dv607
 
         public void addBoat(Boat boat)
         {
+            Console.WriteLine("hej");
             databaseModel.addBoat(boat);
         }
     }

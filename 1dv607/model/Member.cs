@@ -34,7 +34,7 @@ namespace _1dv607
             {
                 if (Boats[i].BoatId != boat.BoatId)
                 {
-                    boatsTemp.Add(boat);
+                    boatsTemp.Add(Boats[i]);
                 }
             }
 

@@ -122,7 +122,7 @@ namespace _1dv607
             //Show a list of boats belonging to the desired owner
             Member boatOwner = _memberHandler.getMember(boatOwnerName);
             List<Boat> boats = _boatHandler.getBoats(boatOwner.MemberId);
-            _view.Output("Boats belonging to " + boatOwner + ":");
+            _view.Output("Boats belonging to " + boatOwnerName + ":");
             for (int i = 0; i < boats.Count; i++)
             {
                 _view.Output((i+1) + " Type: " + boats[i].getType() + ", Length: " + boats[i].getLength());
@@ -138,7 +138,7 @@ namespace _1dv607
             int newLength = Convert.ToInt32(_view.Input());
 
             _boatHandler.deleteBoat(boatOwner, boat);
-
+            
             boat.setType(newType);
             boat.setLength(newLength);
             _boatHandler.addBoat(boatOwner, boat);

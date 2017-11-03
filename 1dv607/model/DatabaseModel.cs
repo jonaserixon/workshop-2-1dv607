@@ -191,9 +191,8 @@ namespace _1dv607
 
         public void addBoat(Member member, Boat boat)
         {
-            // hämta en lista av members från Members.txt
             List<Member> members = findMembers();
-            // lägg till boat till den member som matchar member i argumentet
+            
             foreach(Member member2 in members)
             {
                 if (member.MemberId == member2.MemberId)
@@ -201,12 +200,12 @@ namespace _1dv607
                     member2.AddBoat(boat);
                 }
             }
-            // ta bort Members.txt
+            
             if (File.Exists(MEMBER_FILE_PATH))
             {
                 File.Delete(MEMBER_FILE_PATH);
             }
-            // skapa en ny Members.txt med den nya båten
+            
             for (int i = 0; i < members.Count; i++)
             {
                 addMember(members[i]);

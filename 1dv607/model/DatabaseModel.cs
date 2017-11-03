@@ -7,7 +7,6 @@ namespace _1dv607
     class DatabaseModel
     {
         private static string MEMBER_FILE_PATH = "./Members.txt";
-        private static string BOAT_FILE_PATH = "./Boats.txt";
 
         private void doesFileExist(string filepath)
         {
